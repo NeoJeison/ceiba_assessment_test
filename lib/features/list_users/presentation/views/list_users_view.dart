@@ -26,7 +26,10 @@ class ListUsersView extends StatelessWidget {
           case Loaded:
             return UsersList(users: (state as Loaded).users);
           case Filtered:
-            return UsersList(users: (state as Filtered).filteredUsers);
+            final users = (state as Filtered).filteredUsers;
+            return users.isEmpty ? const Center(
+              child: TextDisplay(message: 'List is empty')
+            ) : UsersList(users: users);
           case Error:
             return Center(
               child: TextDisplay(message: (state as Error).message)
