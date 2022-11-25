@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "title": "Lorem ipsum dolor sit amet",
+    "body": "Consectetur adipiscing elit. Maecenas sit amet sem dapibus, tempus velit vel, faucibus nisi. Etiam varius feugiat tellus, eu fermentum massa venenatis ut. Curabitur placerat orci eu risus faucibus, vitae gravida elit auctor."
+  },
+  {
+    "id": 2,
+    "title": "Fusce et imperdiet turpis, in eleifend massa",
+    "body": "Duis viverra libero nec velit vulputate, quis faucibus nibh placerat. Nam consequat tortor a interdum ultrices. Nunc facilisis, dolor et pharetra vestibulum, dolor nunc tincidunt nulla, ut sagittis sapien nulla eu odio."
+  },
+  {
+    "id": 3,
+    "title": "Pellentesque ac mauris mauris",
+    "body": "Proin nec fringilla ipsum, in convallis magna. Aliquam dapibus urna vitae sem sollicitudin cursus ut in elit. Sed in ultricies odio. Phasellus sit amet auctor ante. Pellentesque sit amet fringilla nisi."
+  }
+]

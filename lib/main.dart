@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 
-void main() {
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ceiba_assessment_test/core/router/router.dart';
+import 'package:ceiba_assessment_test/dependency_injection.dart' as di;
+import 'package:ceiba_assessment_test/core/utils/constants/styles.dart';
+import 'package:ceiba_assessment_test/features/list_users/presentation/cubits/users_list_cubit.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await di.init();
   runApp(const MyApp());
 }
 
@@ -9,46 +17,28 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      
-      title: 'Prueba de ingreso',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Prueba de ingreso'),
-    );
-  }
-}
+    final appRouter = AppRouter();
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text(
-              'List is empty',
-            ),
-          ],
+    return BlocProvider(
+      create: (context) => di.getIt<UsersListCubit>()..getUsers(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        
+        title: 'Prueba de ingreso',
+        theme: ThemeData(
+          primarySwatch: MaterialColor(cGreen.value, cGreenSwatch),
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          backgroundColor: Colors.white,
+          scaffoldBackgroundColor: Colors.white,
+          appBarTheme: const AppBarTheme(
+            centerTitle: false,
+            backgroundColor: cDarkGreen,
+          ),
+          canvasColor: Colors.white
         ),
-      ),
+
+        routes: appRouter.routes
+      )
     );
   }
 }
